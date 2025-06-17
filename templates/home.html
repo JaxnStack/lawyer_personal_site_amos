@@ -3,45 +3,50 @@
 
 {% block content %}
 
-<!-- HERO SECTION -->
-<section class="bg-gray-100 py-12">
+<!-- HERO -->
+<section class="bg-gradient-to-br from-blue-50 to-white py-12">
   <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
     
-    <!-- Carousel Text -->
+    <!-- Rotating Text -->
     <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-      <div id="textCarousel" class="relative h-48 overflow-hidden">
-        <div class="text-slide animate-fade-in transition-opacity duration-700">
-          <h1 class="text-4xl font-bold text-blue-800 mb-4">Advocating for Justice</h1>
-          <p class="text-lg text-gray-700">Representing clients with integrity and precision.</p>
-        </div>
-        <!-- Add JS later to rotate this content -->
+      <div x-data="{ active: 0, slides: [
+        { title: 'Advocating for Justice', desc: 'Representing clients with integrity and precision.' },
+        { title: 'Business Law Expertise', desc: 'Contract negotiation and compliance guidance.' },
+        { title: 'Trusted Legal Educator', desc: 'Teaching LLB students across Nairobi institutions.' }
+      ] }" x-init="setInterval(() => active = (active + 1) % slides.length, 4000)">
+        <template x-for="(slide, i) in slides" :key="i">
+          <div x-show="active === i" x-transition.opacity.duration.500ms>
+            <h1 class="text-4xl font-bold text-blue-800 mb-4" x-text="slide.title"></h1>
+            <p class="text-lg text-gray-700 dark:text-gray-300" x-text="slide.desc"></p>
+          </div>
+        </template>
       </div>
       <a href="{% url 'contact' %}" class="mt-6 inline-block bg-blue-700 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 transition">Contact Amos</a>
     </div>
 
-    <!-- Amos Image -->
-    <div class="md:w-1/2 text-center">
-      <img src="{% static 'img/amos.jpg' %}" alt="Amos Kisilu" class="w-72 h-72 object-cover rounded-full mx-auto shadow-lg" />
+    <!-- Fixed Amos Image -->
+    <div class="md:w-1/2">
+      <img src="{% static 'img/amos.jpg' %}" alt="Amos Kisilu" class="w-full h-auto object-cover rounded-3xl shadow-lg" />
     </div>
   </div>
 </section>
 
-<!-- AREAS OF PRACTICE -->
-<section class="py-12 bg-white">
+<!-- PRACTICE AREAS -->
+<section class="py-12 bg-white dark:bg-gray-900">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-blue-800 mb-10">Fields of Practice</h2>
+    <h2 class="text-3xl font-bold text-center text-blue-800 dark:text-blue-300 mb-10">Fields of Practice</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div class="p-6 shadow rounded-lg">
+      <div class="p-6 shadow rounded-lg hover:shadow-xl transition">
         <img src="{% static 'img/icons/business-law.svg' %}" alt="Business Law" class="w-16 h-16 mx-auto mb-4">
         <h3 class="text-xl font-semibold mb-2">Business Law</h3>
         <p>Corporate advisory and contract negotiation with compliance.</p>
       </div>
-      <div class="p-6 shadow rounded-lg">
+      <div class="p-6 shadow rounded-lg hover:shadow-xl transition">
         <img src="{% static 'img/icons/litigation.svg' %}" alt="Litigation" class="w-16 h-16 mx-auto mb-4">
         <h3 class="text-xl font-semibold mb-2">Litigation</h3>
         <p>High Court representation in civil and commercial matters.</p>
       </div>
-      <div class="p-6 shadow rounded-lg">
+      <div class="p-6 shadow rounded-lg hover:shadow-xl transition">
         <img src="{% static 'img/icons/education.svg' %}" alt="Lecturing" class="w-16 h-16 mx-auto mb-4">
         <h3 class="text-xl font-semibold mb-2">Legal Education</h3>
         <p>Lecturing business law to LLB students, nurturing future advocates.</p>
@@ -51,15 +56,32 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="py-12 bg-gray-50">
+<section class="py-12 bg-gray-50 dark:bg-gray-800">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-blue-800 mb-10">What Clients Say</h2>
-    <div class="relative max-w-2xl mx-auto">
-      <div class="carousel-item text-center bg-white p-6 rounded-lg shadow">
-        <img src="{% static 'img/testimonials/client1.jpg' %}" alt="Client 1" class="w-24 h-24 rounded-full mx-auto mb-4">
-        <p class="italic text-gray-700">"Amos Kisilu is an exceptional advocate — precise, ethical and thorough."</p>
-        <h4 class="mt-4 font-semibold text-blue-800">Jane Mwikali</h4>
-      </div>
+    <h2 class="text-3xl font-bold text-center text-blue-800 dark:text-blue-300 mb-10">What Clients Say</h2>
+    <div class="relative max-w-2xl mx-auto" 
+     x-data="{ current: 0, testimonials: [
+      { name: 'Jane Mwikali', quote: 'Amos Kisilu is an exceptional advocate — precise, ethical and thorough.', img: '{% static "img/icons/client1.jpg" %}' },
+      { name: 'Peter Karanja', quote: 'Professional and dependable legal support.', img: '{% static "img/icons/client2.jpg" %}' },
+      { name: 'Amina Yusuf', quote: 'His insights during my litigation process were invaluable.', img: '{% static "img/icons/client3.jpg" %}' }
+    ] }" 
+     x-init="setInterval(() => current = (current + 1) % testimonials.length, 5000)">
+      
+  <template x-for="(test, index) in testimonials" :key="index">
+    <div x-show="current === index" x-transition.opacity 
+         class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow text-center">
+      <img :src="test.img" alt="Client photo" 
+           class="w-24 h-24 rounded-full mx-auto mb-4 object-cover shadow-md">
+      <p class="italic text-gray-700 dark:text-gray-200" 
+         x-text="`&quot;${test.quote}&quot;`"></p>
+      <h4 class="mt-4 font-semibold text-blue-800 dark:text-blue-300" 
+          x-text="test.name"></h4>
+    </div>
+  </template>
+
+</div>
+
+
     </div>
   </div>
 </section>

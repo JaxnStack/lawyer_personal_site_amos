@@ -1,54 +1,106 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="transition duration-300">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Amos Kisilu is a Nairobi-based High Court Advocate and Law Lecturer providing legal services in litigation, business law, and education." />
+  <meta property="og:title" content="Amos Kisilu - Advocate" />
+  <meta property="og:description" content="Professional legal services in Kilimani, Nairobi." />
+  <meta property="og:image" content="{% static 'img/amos.jpg' %}" />
   <title>Amos Kisilu - Advocate</title>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <!-- ✅ Instantly apply dark mode if saved -->
+  <script>
+    if (localStorage.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
+  <!-- ✅ Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    };
+  </script>
+
+  <!-- ✅ Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Optional custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
 </head>
-<body class="flex flex-col min-h-screen">
 
-  <!-- HEADER -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <nav class="container mx-auto flex items-center justify-between py-4 px-4">
-      <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-700">Amos Kisilu</a>
-      <ul class="flex space-x-6 items-center">
-        <li><a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-700">Home</a></li>
-        <li class="relative group">
-          <button class="text-gray-700 hover:text-blue-700">About</button>
-          <ul class="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded mt-2">
-            <li><a href="{% url 'about' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">About Amos</a></li>
-            <li><a href="{% url 'practice' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Areas of Practice</a></li>
-          </ul>
-        </li>
-        <li><a href="{% url 'blog' %}" class="text-gray-700 hover:text-blue-700">Insights</a></li>
-        <li><a href="{% url 'contact' %}" class="text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg transition">Contact Amos</a></li>
-      </ul>
-    </nav>
-  </header>
+<body class="flex flex-col min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition">
 
-  <!-- MAIN -->
-  <main class="flex-grow">
-    {% block content %}
-    {% endblock %}
-  </main>
+<!-- HEADER -->
+<header class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
+  <nav class="container mx-auto flex items-center justify-between px-4 py-4 text-gray-800 dark:text-gray-100">
+    <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-700 dark:text-blue-400">Amos Kisilu</a>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-800 text-white py-6">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
-      <div>
-        <h2 class="font-semibold text-lg">Amos Kisilu Advocates</h2>
-        <p>Kilimani, Nairobi, Kenya</p>
-        <p>Email: amos@example.com</p>
-        <p>Phone: +254 712 345678</p>
-      </div>
-      <div class="mt-4 md:mt-0">
-        <p>&copy; {{ year }} Amos Kisilu. All rights reserved.</p>
-      </div>
+    <!-- Hamburger -->
+    <div class="md:hidden">
+      <button id="hamburger-btn">
+        <svg class="w-6 h-6 text-blue-700 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
-  </footer>
 
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex space-x-6 items-center">
+      <li><a href="{% url 'home' %}" class="hover:text-blue-700 dark:hover:text-blue-300">Home</a></li>
+      <li><a href="{% url 'about' %}" class="hover:text-blue-700 dark:hover:text-blue-300">About</a></li>
+      <li><a href="{% url 'practice' %}" class="hover:text-blue-700 dark:hover:text-blue-300">Practice Areas</a></li>
+      <li><a href="{% url 'blog' %}" class="hover:text-blue-700 dark:hover:text-blue-300">Insights</a></li>
+      <li>
+        <a href="{% url 'contact' %}" class="bg-blue-700 hover:bg-blue-800 text-white dark:bg-blue-600 dark:hover:bg-blue-700 px-4 py-2 rounded transition">Contact</a>
+      </li>
+      <li>
+        <button id="darkToggle" class="text-xl ml-2">
+          <span id="moon">🌙</span>
+          <span id="sun" class="hidden">☀️</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <ul id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+    <li><a href="{% url 'home' %}" class="block py-2">Home</a></li>
+    <li><a href="{% url 'about' %}" class="block py-2">About</a></li>
+    <li><a href="{% url 'practice' %}" class="block py-2">Practice Areas</a></li>
+    <li><a href="{% url 'blog' %}" class="block py-2">Insights</a></li>
+    <li><a href="{% url 'contact' %}" class="block py-2">Contact</a></li>
+    <li>
+      <button id="mobile-dark-toggle" class="block w-full py-2 text-left">🌗 Toggle Mode</button>
+    </li>
+  </ul>
+</header>
+
+<!-- MAIN -->
+<main class="flex-grow">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-6 transition">
+  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+    <div>
+      <h2 class="font-semibold text-lg">Amos Kisilu Advocates</h2>
+      <p>Kilimani, Nairobi, Kenya</p>
+      <p>Email: amos@example.com</p>
+      <p>Phone: +254 712 345678</p>
+    </div>
+    <div class="mt-4 md:mt-0">
+      <p>&copy; {{ year }} Amos Kisilu. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Custom JS -->
+<script defer src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

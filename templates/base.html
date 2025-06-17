@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amos Kisilu - Advocate</title>
 
-  <!-- Immediately apply dark class -->
+  <!-- Immediately apply dark mode -->
   <script>
     if (localStorage.theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -19,7 +19,10 @@
     tailwind.config = { darkMode: 'class' };
   </script>
 
-  <!-- Optional CSS -->
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
 </head>
 
@@ -67,10 +70,12 @@
   </div>
 </header>
 
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 <main class="flex-grow">
   {% block content %}{% endblock %}
 </main>
+
+
 
 <!-- FOOTER -->
 <footer class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-6">
@@ -98,7 +103,7 @@
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // Initial theme
+    // Apply saved theme
     const theme = localStorage.theme;
     if (theme === 'dark') {
       html.classList.add('dark');
@@ -110,7 +115,7 @@
       sunIcon.classList.add('hidden');
     }
 
-    // Toggle logic
+    // Theme toggle function
     function toggleTheme() {
       const isDark = html.classList.contains('dark');
       html.classList.toggle('dark');
@@ -119,6 +124,7 @@
       sunIcon.classList.toggle('hidden');
     }
 
+    // Event listeners
     if (darkToggle) darkToggle.addEventListener('click', toggleTheme);
     if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
     if (hamburgerBtn) hamburgerBtn.addEventListener('click', () => {

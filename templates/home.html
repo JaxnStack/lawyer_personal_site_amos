@@ -1,4 +1,67 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
-<h1 class="text-3xl font-bold text-center mt-10">Welcome to Amos Kisilu’s Law Office</h1>
+
+<!-- HERO SECTION -->
+<section class="bg-gray-100 py-12">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
+    
+    <!-- Carousel Text -->
+    <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+      <div id="textCarousel" class="relative h-48 overflow-hidden">
+        <div class="text-slide animate-fade-in transition-opacity duration-700">
+          <h1 class="text-4xl font-bold text-blue-800 mb-4">Advocating for Justice</h1>
+          <p class="text-lg text-gray-700">Representing clients with integrity and precision.</p>
+        </div>
+        <!-- Add JS later to rotate this content -->
+      </div>
+      <a href="{% url 'contact' %}" class="mt-6 inline-block bg-blue-700 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 transition">Contact Amos</a>
+    </div>
+
+    <!-- Amos Image -->
+    <div class="md:w-1/2 text-center">
+      <img src="{% static 'img/amos.jpg' %}" alt="Amos Kisilu" class="w-72 h-72 object-cover rounded-full mx-auto shadow-lg" />
+    </div>
+  </div>
+</section>
+
+<!-- AREAS OF PRACTICE -->
+<section class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-blue-800 mb-10">Fields of Practice</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div class="p-6 shadow rounded-lg">
+        <img src="{% static 'img/icons/business-law.svg' %}" alt="Business Law" class="w-16 h-16 mx-auto mb-4">
+        <h3 class="text-xl font-semibold mb-2">Business Law</h3>
+        <p>Corporate advisory and contract negotiation with compliance.</p>
+      </div>
+      <div class="p-6 shadow rounded-lg">
+        <img src="{% static 'img/icons/litigation.svg' %}" alt="Litigation" class="w-16 h-16 mx-auto mb-4">
+        <h3 class="text-xl font-semibold mb-2">Litigation</h3>
+        <p>High Court representation in civil and commercial matters.</p>
+      </div>
+      <div class="p-6 shadow rounded-lg">
+        <img src="{% static 'img/icons/education.svg' %}" alt="Lecturing" class="w-16 h-16 mx-auto mb-4">
+        <h3 class="text-xl font-semibold mb-2">Legal Education</h3>
+        <p>Lecturing business law to LLB students, nurturing future advocates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-blue-800 mb-10">What Clients Say</h2>
+    <div class="relative max-w-2xl mx-auto">
+      <div class="carousel-item text-center bg-white p-6 rounded-lg shadow">
+        <img src="{% static 'img/testimonials/client1.jpg' %}" alt="Client 1" class="w-24 h-24 rounded-full mx-auto mb-4">
+        <p class="italic text-gray-700">"Amos Kisilu is an exceptional advocate — precise, ethical and thorough."</p>
+        <h4 class="mt-4 font-semibold text-blue-800">Jane Mwikali</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

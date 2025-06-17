@@ -4,31 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Amos Kisilu is a Nairobi-based High Court Advocate and Law Lecturer providing legal services in litigation, business law, and education." />
-  <meta property="og:title" content="Amos Kisilu - Advocate" />
-  <meta property="og:description" content="Professional legal services in Kilimani, Nairobi." />
-  <meta property="og:image" content="{% static 'img/amos.jpg' %}" />
   <title>Amos Kisilu - Advocate</title>
 
-  <!-- ✅ Instantly apply dark mode if saved -->
+  <!-- Immediately apply dark class -->
   <script>
     if (localStorage.theme === 'dark') {
       document.documentElement.classList.add('dark');
     }
   </script>
 
-  <!-- ✅ Tailwind CSS -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class'
-    };
+    tailwind.config = { darkMode: 'class' };
   </script>
 
-  <!-- ✅ Alpine.js -->
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <!-- Optional custom CSS -->
+  <!-- Optional CSS -->
   <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
 </head>
 
@@ -36,18 +27,16 @@
 
 <!-- HEADER -->
 <header class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
-  <nav class="container mx-auto flex items-center justify-between px-4 py-4 text-gray-800 dark:text-gray-100">
+  <nav class="container mx-auto flex items-center justify-between px-4 py-4">
     <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-700 dark:text-blue-400">Amos Kisilu</a>
 
-    <!-- Hamburger -->
-    <div class="md:hidden">
-      <button id="hamburger-btn">
-        <svg class="w-6 h-6 text-blue-700 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    <!-- Hamburger button -->
+    <button id="hamburger-btn" class="md:hidden">
+      <svg class="w-6 h-6 text-blue-700 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
 
     <!-- Desktop Nav -->
     <ul class="hidden md:flex space-x-6 items-center">
@@ -68,16 +57,14 @@
   </nav>
 
   <!-- Mobile Nav -->
-  <ul id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100">
-    <li><a href="{% url 'home' %}" class="block py-2">Home</a></li>
-    <li><a href="{% url 'about' %}" class="block py-2">About</a></li>
-    <li><a href="{% url 'practice' %}" class="block py-2">Practice Areas</a></li>
-    <li><a href="{% url 'blog' %}" class="block py-2">Insights</a></li>
-    <li><a href="{% url 'contact' %}" class="block py-2">Contact</a></li>
-    <li>
-      <button id="mobile-dark-toggle" class="block w-full py-2 text-left">🌗 Toggle Mode</button>
-    </li>
-  </ul>
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-white dark:bg-gray-800">
+    <a href="{% url 'home' %}" class="block py-2">Home</a>
+    <a href="{% url 'about' %}" class="block py-2">About</a>
+    <a href="{% url 'practice' %}" class="block py-2">Practice Areas</a>
+    <a href="{% url 'blog' %}" class="block py-2">Insights</a>
+    <a href="{% url 'contact' %}" class="block py-2">Contact</a>
+    <button id="mobile-dark-toggle" class="block w-full py-2 text-left">🌗 Toggle Mode</button>
+  </div>
 </header>
 
 <!-- MAIN -->
@@ -86,7 +73,7 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-6 transition">
+<footer class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-6">
   <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
     <div>
       <h2 class="font-semibold text-lg">Amos Kisilu Advocates</h2>
@@ -100,7 +87,45 @@
   </div>
 </footer>
 
-<!-- Custom JS -->
-<script defer src="{% static 'js/main.js' %}"></script>
+<!-- JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const html = document.documentElement;
+    const darkToggle = document.getElementById('darkToggle');
+    const mobileToggle = document.getElementById('mobile-dark-toggle');
+    const moonIcon = document.getElementById('moon');
+    const sunIcon = document.getElementById('sun');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Initial theme
+    const theme = localStorage.theme;
+    if (theme === 'dark') {
+      html.classList.add('dark');
+      moonIcon.classList.add('hidden');
+      sunIcon.classList.remove('hidden');
+    } else {
+      html.classList.remove('dark');
+      moonIcon.classList.remove('hidden');
+      sunIcon.classList.add('hidden');
+    }
+
+    // Toggle logic
+    function toggleTheme() {
+      const isDark = html.classList.contains('dark');
+      html.classList.toggle('dark');
+      localStorage.theme = isDark ? 'light' : 'dark';
+      moonIcon.classList.toggle('hidden');
+      sunIcon.classList.toggle('hidden');
+    }
+
+    if (darkToggle) darkToggle.addEventListener('click', toggleTheme);
+    if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
+    if (hamburgerBtn) hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+</script>
+
 </body>
 </html>

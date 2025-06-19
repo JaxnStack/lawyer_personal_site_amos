@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'captcha',
+    'core',
+    'widget_tweaks',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,3 +125,21 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#contacts settings
+# Contact email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'youremail@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_app_password'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# reCAPTCHA keys (get from https://www.google.com/recaptcha/admin)
+RECAPTCHA_PUBLIC_KEY = 'your-public-key'
+RECAPTCHA_PRIVATE_KEY = 'your-private-key'
+
+
+
+

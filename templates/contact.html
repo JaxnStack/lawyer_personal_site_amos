@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="max-w-xl mx-auto p-8 bg-white shadow-md rounded-lg">
+  <h1 class="text-2xl font-bold mb-4">Contact Us</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-4">
+      {{ form.name.label_tag }} {{ form.name|add_class:"w-full p-2 border rounded" }}
+    </div>
+    <div class="mb-4">
+      {{ form.email.label_tag }} {{ form.email|add_class:"w-full p-2 border rounded" }}
+    </div>
+    <div class="mb-4">
+      {{ form.message.label_tag }} {{ form.message|add_class:"w-full p-2 border rounded h-32" }}
+    </div>
+    <div class="mb-4">
+      {{ form.captcha }}
+    </div>
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Send</button>
+  </form>
+</div>
+{% endblock %}

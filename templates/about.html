@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="bg-white dark:bg-gray-900 py-12">
+  <div class="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+
+    <!-- Profile Image -->
+    <div class="flex justify-center">
+      <img src="{% static 'img/amos.jpg' %}" alt="Amos Kisilu" class="rounded-2xl shadow-lg w-full max-w-sm object-cover">
+    </div>
+
+    <!-- Details -->
+    <div>
+      <h1 class="text-4xl font-bold text-blue-700 dark:text-blue-400 mb-4">Amos Kisilu</h1>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Advocate of the High Court of Kenya | Commercial Law Specialist | Corporate Legal Strategist</p>
+
+      <p class="mb-4 text-gray-800 dark:text-gray-200">
+        With over <strong>10 years of experience</strong> in corporate and commercial law, Amos Kisilu has guided over 200 local and international clients through business formation, contract negotiation, regulatory compliance, and high-stakes litigation. His mission is to empower enterprises with reliable, practical, and strategic legal solutions.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        A proud graduate of the University of Nairobi School of Law and a certified Arbitrator, Amos brings not just legal acumen but deep insight into Kenya's evolving business landscape.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        He is a member of the <strong>Law Society of Kenya</strong>, <strong>East Africa Law Society</strong>, and serves as a board legal advisor for multiple SMEs.
+      </p>
+
+      <!-- Resume Download -->
+      <a href="{% static 'document/resume' %}" download
+         class="inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg shadow transition duration-300">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 4v16h16V4H4zm4 8h8m-4-4v8" />
+        </svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Icons Section -->
+<section class="bg-gray-100 dark:bg-gray-800 py-12">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-8">Professional Credentials</h2>
+
+    <div class="grid md:grid-cols-3 gap-8 text-gray-700 dark:text-gray-300">
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M12 4v16m8-8H4" />
+        </svg>
+        <h4 class="font-bold text-xl mb-2">10+ Years Experience</h4>
+        <p>Serving businesses in Nairobi and beyond with precision and dedication.</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M9 12h6m2 8H7a2 2 0 01-2-2V6a2 2 0 012-2h3.5a2 2 0 011.4.6l1.1 1.1a2 2 0 001.4.6H17a2 2 0 012 2v12a2 2 0 01-2 2z" />
+        </svg>
+        <h4 class="font-bold text-xl mb-2">Certified Arbitrator</h4>
+        <p>Trained mediator and ADR expert with a reputation for fairness and clarity.</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M5 13l4 4L19 7" />
+        </svg>
+        <h4 class="font-bold text-xl mb-2">200+ Cases Closed</h4>
+        <p>Contracts, mergers, disputes, and business defenses—handled with integrity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Prompt -->
+<section class="bg-white dark:bg-gray-900 py-12">
+  <div class="container mx-auto text-center px-4">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Need Strategic Legal Advice?</h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">Let's secure your business and protect your vision today.</p>
+    <a href="{% url 'contact' %}"
+       class="inline-block bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition">
+      Contact Me Now
+    </a>
+  </div>
+</section>
+{% endblock %}

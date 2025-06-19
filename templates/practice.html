@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="bg-gray-50 dark:bg-gray-900 py-16">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold text-center text-blue-700 dark:text-blue-400 mb-12">Practice Areas</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- Commercial Law -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transform transition hover:scale-105 duration-300">
+        <div class="flex items-center mb-4">
+          <svg class="w-10 h-10 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+          </svg>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Commercial Law</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          Expert guidance on <a href="https://en.wikipedia.org/wiki/Commercial_law" class="text-blue-600 dark:text-blue-400 underline" target="_blank">commercial law</a>, business contracts, sales agreements, and trade disputes.
+        </p>
+      </div>
+
+      <!-- Corporate Law -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transform transition hover:scale-105 duration-300">
+        <div class="flex items-center mb-4">
+          <svg class="w-10 h-10 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v4a1 1 0 001 1h3m10 0h3a1 1 0 001-1V7m-7 4v9m-4-9v9m8-13h2a1 1 0 011 1v2a1 1 0 01-1 1h-2m-4-4H8m0 0H6a1 1 0 00-1 1v2a1 1 0 001 1h2" />
+          </svg>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Corporate Law</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          Support for <a href="https://en.wikipedia.org/wiki/Corporate_law" class="text-green-600 dark:text-green-400 underline" target="_blank">corporate law</a> issues including company formation, governance, and compliance.
+        </p>
+      </div>
+
+      <!-- Real Estate Law -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transform transition hover:scale-105 duration-300">
+        <div class="flex items-center mb-4">
+          <svg class="w-10 h-10 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9.75L12 3l9 6.75M4.5 10.5v9.75h5.25v-6.75h4.5v6.75H19.5V10.5" />
+          </svg>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Real Estate & Land Law</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          Land acquisition, lease agreements, and <a href="https://en.wikipedia.org/wiki/Real_estate" class="text-yellow-600 dark:text-yellow-400 underline" target="_blank">real estate</a> litigation.
+        </p>
+      </div>
+
+      <!-- Employment Law -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transform transition hover:scale-105 duration-300">
+        <div class="flex items-center mb-4">
+          <svg class="w-10 h-10 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c1.657 0 3-1.567 3-3.5S13.657 4 12 4 9 5.567 9 7.5 10.343 11 12 11zm0 2c-2.667 0-8 1.333-8 4v1h16v-1c0-2.667-5.333-4-8-4z" />
+          </svg>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Employment & Labor</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          We advise on <a href="https://en.wikipedia.org/wiki/Labour_law" class="text-red-600 dark:text-red-400 underline" target="_blank">labor laws</a>, employee rights, termination procedures, and workplace disputes.
+        </p>
+      </div>
+
+      <!-- Intellectual Property -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transform transition hover:scale-105 duration-300">
+        <div class="flex items-center mb-4">
+          <svg class="w-10 h-10 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12h.01M9 12h.01M12 15.5c2.5 0 4.5-2 4.5-4.5S14.5 6.5 12 6.5 7.5 8.5 7.5 11s2 4.5 4.5 4.5z" />
+          </svg>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Intellectual Property</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          Registration, protection, and enforcement of <a href="https://en.wikipedia.org/wiki/Intellectual_property" class="text-purple-600 dark:text-purple-400 underline" target="_blank">IP rights</a> including patents and trademarks.
+        </p>
+      </div>
+
+      <!-- Litigation -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transform transition hover:scale-105 duration-300">
+        <div class="flex items-center mb-4">
+          <svg class="w-10 h-10 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m-2 0a2 2 0 012-2h6a2 2 0 012 2m-1 6a3 3 0 11-6 0m6 0h-6" />
+          </svg>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Litigation & Dispute Resolution</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          Representation in courts, arbitration, and mediation in both civil and commercial <a href="https://en.wikipedia.org/wiki/Litigation" class="text-indigo-600 dark:text-indigo-400 underline" target="_blank">litigation</a>.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

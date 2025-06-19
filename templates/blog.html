@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Legal Blog | Nairobi Commercial Lawyer{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-12 animate-fade-in">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1 space-y-6">
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Search</h2>
+        <input type="text" id="searchInput" placeholder="Search articles..." class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600">
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Categories</h2>
+        <ul class="space-y-2">
+          <li><button class="category-btn text-blue-700 hover:underline" data-category="all">All</button></li>
+          <li><button class="category-btn" data-category="startup-law">Startup Law</button></li>
+          <li><button class="category-btn" data-category="contract-drafting">Contract Drafting</button></li>
+          <li><button class="category-btn" data-category="litigation">Commercial Litigation</button></li>
+          <li><button class="category-btn" data-category="compliance">Compliance</button></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Blog Cards -->
+    <section class="lg:col-span-3">
+      <div id="blogGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <!-- Blog Card 1 -->
+        <div class="fade-in-card border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white" data-category="contract-drafting">
+          <a href="blog-detail-contract-drafting.html">
+            <img src="{% static 'img/contract.jpg' %}" class="w-full h-48 object-cover" alt="Contract Drafting">
+            <div class="p-4">
+              <h2 class="text-xl font-bold text-blue-700 hover:underline">Business Contracts in Kenya</h2>
+              <p class="text-gray-600 mt-2 text-sm">A practical guide to contracts every Nairobi business should know.</p>
+              <p class="text-gray-400 text-xs mt-2">June 2025</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div class="fade-in-card border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white" data-category="startup-law">
+          <a href="blog-detail-startup-law.html">
+            <img src="{% static 'img/startup.jpg' %}" class="w-full h-48 object-cover" alt="Startup Law">
+            <div class="p-4">
+              <h2 class="text-xl font-bold text-blue-700 hover:underline">Startup Legal Checklist for Kenya</h2>
+              <p class="text-gray-600 mt-2 text-sm">10 legal essentials for Kenyan startups and founders.</p>
+              <p class="text-gray-400 text-xs mt-2">June 2025</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mt-8 text-center">
+        <button id="loadMoreBtn" class="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800 transition">Load More</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="{% static 'js/blog.js' %}"></script>
+{% endblock %}

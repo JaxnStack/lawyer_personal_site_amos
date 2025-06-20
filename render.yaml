@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: lawyer-site
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn amoskisilu.wsgi --log-file -
+    staticPublishPath: staticfiles
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: DJANGO_DEBUG
+        value: False
+      - key: DJANGO_ALLOWED_HOSTS
+        value: yourdomain.com,www.yourdomain.com
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: RECAPTCHA_PUBLIC_KEY
+        sync: false
+      - key: RECAPTCHA_PRIVATE_KEY
+        sync: false

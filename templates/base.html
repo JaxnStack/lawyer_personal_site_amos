@@ -4,7 +4,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amos Kisilu - Advocate</title>
+
+  <title>Amos Kisilu Advocates | Commercial Lawyer in Nairobi, Kenya</title>
+  <meta name="description" content="Amos Kisilu Advocates is a top commercial law firm based in Nairobi, Kenya. We offer legal services in corporate law, contracts, real estate, and dispute resolution." />
+  <meta name="keywords" content="Commercial Lawyer Nairobi, Corporate Law Kenya, Legal Services Nairobi, Amos Kisilu, Business Contracts, Real Estate Law Kenya" />
+  <meta name="author" content="Amos Kisilu Advocates" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Amos Kisilu Advocates | Commercial Lawyer in Nairobi" />
+  <meta property="og:description" content="Top-rated legal services in Nairobi: contracts, business law, property, and more." />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{% static 'images/og-preview.jpg' %}" />  <!-- optional, if you have a preview image -->
+
+  <!-- Structured Data (JSON-LD) for Legal Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Amos Kisilu Advocates",
+    "image": "https://lawyer-personal-site-amos.onrender.com/static/images/og-preview.jpg",  // replace if needed
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kilimani",
+      "addressLocality": "Nairobi",
+      "addressCountry": "KE"
+    },
+    "url": "{{ request.build_absolute_uri }}",
+    "telephone": "+254712345678",
+    "description": "Commercial legal services including contracts, corporate law, and real estate in Kenya."
+  }
+  </script>
 
   <!-- Immediately apply dark mode -->
   <script>
@@ -24,6 +57,8 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+</head>
+
 </head>
 
 <body class="flex flex-col min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition">
